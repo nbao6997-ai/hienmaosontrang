@@ -1,0 +1,185 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body {
+  background: #fdf8f2; /* vàng kem ấm */
+  color: #2f2f2f;
+  line-height: 1.6;
+  font-size: 21px;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+:root {
+  --accent: #2f5d2f; /* xanh rừng đậm */
+  --muted: #6b7280;
+  --card: #f8f4ea; /* kem sáng cho thẻ món ăn */
+}
+
+/* NAV */
+.navbar{display:flex;justify-content:space-between;align-items:center;background:#1b3a24;color:#fff;padding:14px 30px}
+.logo{width:60px;height:60px;border-radius:8px;object-fit:contain;background:#fff}
+.brand{display:flex;align-items:center;gap:12px}
+.menu{list-style:none;display:flex;gap:20px}
+.menu a{color:#fff;text-decoration:none;font-weight:500}
+.menu a:hover{color:#aef0c0}
+
+/* HERO */
+.hero{background:url('https://source.unsplash.com/1600x900/?mountain,forest,stream') center/cover;height:70vh;display:flex;align-items:center;justify-content:center;position:relative}
+.hero .overlay{background:rgba(0,0,0,0.5);color:#fff;padding:40px;border-radius:10px;text-align:center}
+.hero h2{font-size:40px;margin-bottom:10px}
+.btn{background:#2f855a;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn:hover{background:#276749}
+
+/* SECTIONS */
+.section{padding:60px 10%;text-align:center}
+.section h2{color:#2f855a;margin-bottom:20px}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 15px rgba(0,0,0,0.1);transition:transform .3s}
+.card:hover{transform:scale(1.03)}
+.card img{width:100%;height:180px;object-fit:cover}
+.card h3{padding:10px;background:#f8f9f6;color:#1b3a24}
+
+/* BOOKING */
+.form{display:flex;flex-direction:column;max-width:480px;margin:0 auto;gap:10px}
+input,select,textarea{padding:10px;border:1px solid #ccc;border-radius:6px;font-size:15px}
+button{cursor:pointer}
+.msg{margin-top:10px;font-weight:500}
+
+/* FOOTER */
+footer{background:#1b3a24;color:#fff;text-align:center;padding:16px;font-size:14px}
+/* Sửa khoảng cách nút "Khám phá thực đơn" */
+.hero-content button,
+.hero button,
+.hero .btn {
+  margin-top: 20px !important; /* đẩy nút xuống dưới mô tả */
+  display: inline-block;
+}
+
+/* REVIEW */
+.review { background:#f9fdf9; }
+.review-list {
+  max-width: 700px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.review-item {
+  background:#fff;
+  padding:12px 16px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  text-align:left;
+}
+.review-item strong { color:var(--accent); }
+.review-item .stars { color:gold; }
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery .card img {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.gallery .card img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+header {
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: headerDrop 1.2s ease forwards;
+}
+
+@keyframes headerDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.btn, button {
+  transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Hiệu ứng nhấp nháy chậm */
+.btn {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+#leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.leaf {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('images/leaf.png'); /* bạn thay bằng ảnh lá nhỏ PNG */
+  background-size: cover;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0deg); }
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+.card {
+  perspective: 1000px;
+}
+.card img {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.card:hover img {
+  transform: rotateY(180deg);
+}
+.card {
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  border-color: #ffd166;
+  box-shadow: 0 0 15px rgba(255, 209, 102, 0.6);
+}
+/* Logo trong phần giới thiệu */
+.logo-section {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-logo {
+  width: 300px;          /* 👈 giảm từ 120px xuống 80px để logo nhỏ hơn */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));
+}
+
+#gioithieu h2 {
+  margin-top: 16px; /* vẫn giữ khoảng cách hợp lý */
+}
